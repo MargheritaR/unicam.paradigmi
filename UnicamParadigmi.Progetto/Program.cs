@@ -1,1 +1,6 @@
-﻿Console.WriteLine("Hello World");
+using UnicamParadigmi.Test.Examples;
+
+var examples = new EntityFrameworkExample();
+examples.RunExample();
+
+Console.ReadLine();
