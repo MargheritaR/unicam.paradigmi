@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnicamParadigmi.Web", "Unic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnicamParadigmi.Application", "UnicamParadigmi.Application\UnicamParadigmi.Application.csproj", "{6B0BBB7A-F961-4BA4-9020-E6FA506533C9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{7CED35CB-D116-4F25-AA4E-95A211A90F4C}"
+	ProjectSection(SolutionItems) = preProject
+		dump.sql = dump.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
