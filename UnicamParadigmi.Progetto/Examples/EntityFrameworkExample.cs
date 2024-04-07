@@ -22,10 +22,10 @@ namespace UnicamParadigmi.Test.Examples
         public void RunExample()
         {
             var ctx = new MyDbContext();
-            var libri = ctx.Libri.ToList();
+            //var libri = ctx.Libri.ToList();
             // Filtro(ctx);
             // AggiungiLibro(ctx);
-            // ModificaLibro(ctx);
+           // ModificaLibro(ctx);
             RimuoviLibro(ctx);
         }
 
@@ -51,14 +51,14 @@ namespace UnicamParadigmi.Test.Examples
             modLibro.Nome = "L'Occhio del mondo (Modificato)";
             var entry = ctx.Entry(modLibro);
             entry.Property(p => p.Nome).IsModified = true;
-            
+
             ctx.SaveChanges();
         }
 
         private void RimuoviLibro(MyDbContext ctx)
         {
             var rimuovLibro = new Libro();
-            rimuovLibro.ISBN = "978-88-347-3834-4";
+            rimuovLibro.ISBN = "978-88-347-3835-1";
             var entry = ctx.Entry(rimuovLibro);
             entry.State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             ctx.SaveChanges();

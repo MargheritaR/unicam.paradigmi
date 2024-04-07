@@ -15,6 +15,8 @@ namespace UnicamParadigmi.Models.Configurations
         {
             builder.ToTable("Libri");
             builder.HasKey(k => k.ISBN);
+            builder.HasOne(x => x.CatAppartenente).WithMany(x => x.Libri)
+                .HasForeignKey(x => x.Categoria);
         }
     }
 }

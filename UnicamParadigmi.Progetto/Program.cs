@@ -1,6 +1,6 @@
 ﻿using UnicamParadigmi.Test.Examples;
 
-var examples = new EntityFrameworkExample();
+var examples = new RepositoryExample();
 examples.RunExample();
 
 Console.ReadLine();

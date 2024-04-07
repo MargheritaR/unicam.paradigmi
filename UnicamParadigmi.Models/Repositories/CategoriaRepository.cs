@@ -8,9 +8,9 @@ using UnicamParadigmi.Models.Entities;
 
 namespace UnicamParadigmi.Models.Repositories
 {
-    public class LibroRepository : GenericRepository<Libro>
+    public class CategoriaRepository : GenericRepository<Categoria>
     {
-        public LibroRepository(MyDbContext ctx) : base(ctx)
+        public CategoriaRepository(MyDbContext ctx) : base(ctx)
         {
 
         }

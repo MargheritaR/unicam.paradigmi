@@ -12,7 +12,7 @@ namespace UnicamParadigmi.Test.Examples
     {
         public void RunExample()
         {
-            GetLibri();
+            AggiuntaLibro();
         }
 
         private List<Libro> GetLibri()

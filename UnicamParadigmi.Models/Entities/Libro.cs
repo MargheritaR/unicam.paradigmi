@@ -16,10 +16,11 @@ namespace UnicamParadigmi.Models.Entities
 
         public string Editore { get; set; }
 
-        // TODO: Sistemare categoria
         public string Categoria { get; set; }
-
+        
         public DateTime DatadiPubblicazione { get; set; }
+
+        public Categoria CatAppartenente { get; set; }
 
     }
 }

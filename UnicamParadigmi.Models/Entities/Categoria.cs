@@ -10,6 +10,6 @@ namespace UnicamParadigmi.Models.Entities
     {
         public string NomeCategoria { get; set; }
 
-        public int IdCategoria { get; set; }
+        public ICollection<Libro> Libri {  get; set; }
     }
 }
