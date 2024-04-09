@@ -1,6 +1,6 @@
 ﻿using UnicamParadigmi.Test.Examples;
 
-var examples = new RepositoryExample();
+var examples = new ProvaMetodi();
 examples.RunExample();
 
 Console.ReadLine();
