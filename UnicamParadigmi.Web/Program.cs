@@ -1,5 +1,5 @@
 using UnicamParadigmi.Application.Middlewares;
-using UnicamParadigmi.Application.Servicies;
+using UnicamParadigmi.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,13 +11,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddFluentValidatioAutoValidator()//
-builder.Services.AddScoped<LibroService>();
+
+builder.Services.AddSingleton<LibroService>();
 var app = builder.Build();
 
 //INIZIALIZZO I MIDDLEWARE
 
 app.UseMiddleware<MiddlewareExample>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -25,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.Use(async(HttpContext context, Func<Task> next) =>{
+app.Use(async (HttpContext context, Func<Task> next) => {
     await context.Response.WriteAsync("Prova");
     await next.Invoke();
 

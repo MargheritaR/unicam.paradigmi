@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnicamParadigmi.Application.Servicies;
+using UnicamParadigmi.Application.Services;
 
 namespace UnicamParadigmi.Application.Middlewares
 {

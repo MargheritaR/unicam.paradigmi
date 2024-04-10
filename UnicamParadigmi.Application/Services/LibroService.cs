@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnicamParadigmi.Models.Entities;
 
-namespace UnicamParadigmi.Application.Servicies
+namespace UnicamParadigmi.Application.Services
 {
     public class LibroService
     {
