@@ -11,14 +11,13 @@ namespace UnicamParadigmi.Application.Middlewares
     public class MiddlewareExample
     {
         private RequestDelegate _next;
-        private readonly LibroService _libroService;
-        public MiddlewareExample(RequestDelegate next, LibroService libroService) 
+        public MiddlewareExample(RequestDelegate next) 
         {
             _next = next;
-            _libroService = libroService;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, LibroService libroService,
+            IConfiguration configuration)
         {
             //dopo lo implementiamo
             await _next.Invoke(context);
