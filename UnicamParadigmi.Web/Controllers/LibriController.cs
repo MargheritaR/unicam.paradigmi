@@ -13,7 +13,7 @@ namespace UnicamParadigmi.Web.Controllers
         {
             libri.Add(new Libro()
             {
-                ISBN = "978 - 88 - 350 - 4040 - 2",
+                ISBN = "978-88-350-4040-2",
                 Nome = "Mare Gherita",
                 Autore = "Daniele Il Rosso",
                 DatadiPubblicazione = DateTime.Parse("10-03-2000"),
@@ -21,7 +21,7 @@ namespace UnicamParadigmi.Web.Controllers
             });
             libri.Add(new Libro()
             {
-                ISBN = "978 - 88 - 400 - 6070 - 2",
+                ISBN = "978-88-400-6070-2",
                 Nome = "Fracito",
                 Autore = "Dome",
                 DatadiPubblicazione = DateTime.Parse("23-10-2006"),
@@ -31,7 +31,7 @@ namespace UnicamParadigmi.Web.Controllers
         
         [HttpGet]
         [Route("list")]
-        public IEnumerable<Libro> GetLibro()
+        public IEnumerable<Libro> GetLibri()
         {
             return libri;
         }

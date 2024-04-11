@@ -1,3 +1,4 @@
+using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Application.Middlewares;
 using UnicamParadigmi.Application.Services;
 
@@ -11,9 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-string host = builder.Configuration.GetValue<String>("EmailOptions:Host");
 
-builder.Services.AddScoped<LibroService>();
+builder.Services.AddScoped< ILibroService , LibroService >();
 var app = builder.Build();
 
 //INIZIALIZZO I MIDDLEWARE
@@ -28,9 +28,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.Use(async (HttpContext context, Func<Task> next) => {
-    await context.Response.WriteAsync("Prova");
     await next.Invoke();
-
 });
 
 app.UseHttpsRedirection();
