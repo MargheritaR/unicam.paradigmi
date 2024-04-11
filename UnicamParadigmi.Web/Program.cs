@@ -1,6 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Application.Middlewares;
 using UnicamParadigmi.Application.Services;
+using UnicamParadigmi.Models.Context;
+using UnicamParadigmi.Models.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext< MyDbContext>(conf =>
+{
+    conf.UseSqlServer("data source=localhost; Initial catalog=Paradigmi; User Id=AdParadigmi; Password=AdParadigmi; TrustServerCertificate=True");
+});
 builder.Services.AddScoped< ILibroService , LibroService >();
+builder.Services.AddScoped<LibroRepository>();
 var app = builder.Build();
 
 //INIZIALIZZO I MIDDLEWARE

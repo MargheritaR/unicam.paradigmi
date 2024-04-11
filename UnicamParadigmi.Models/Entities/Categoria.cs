@@ -8,8 +8,8 @@ namespace UnicamParadigmi.Models.Entities
 {
     public class Categoria
     {
-        public string NomeCategoria { get; set; }
+        public string NomeCategoria { get; set; } = string.Empty;
 
-        public ICollection<Libro> Libri {  get; set; }
+        public ICollection<Libro> Libri { get; set; } = null;
     }
 }

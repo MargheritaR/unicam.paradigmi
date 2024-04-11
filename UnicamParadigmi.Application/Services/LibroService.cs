@@ -5,11 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Models.Entities;
+using UnicamParadigmi.Models.Repositories;
 
 namespace UnicamParadigmi.Application.Services
 {
     public class LibroService : ILibroService
     {
+        private readonly LibroRepository _libroRepository;
+        public LibroService(LibroRepository libroRepository) 
+        {
+            _libroRepository = libroRepository;
+        }
+        public void AddLibro(Libro libro)
+        {
+            _libroRepository.Aggiungi(libro);
+            _libroRepository.Salvataggio();
+        }
+
         public List<Libro> GetLibri()
         {
             return new List<Libro>();

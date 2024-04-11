@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UnicamParadigmi.Application.Abstraction.Services;
+using UnicamParadigmi.Application.Models.Requeste;
+using UnicamParadigmi.Application.Services;
 using UnicamParadigmi.Models.Entities;
 
 namespace UnicamParadigmi.Web.Controllers
@@ -7,40 +10,36 @@ namespace UnicamParadigmi.Web.Controllers
     [Route("api/v1/[controller]")]
     public class LibroController : ControllerBase
     {
-        List<Libro> libri = new List<Libro>();
-
-        public LibroController()
+        private readonly ILibroService _libroService;
+        public LibroController(ILibroService libroService) 
         {
-            libri.Add(new Libro()
-            {
-                ISBN = "978-88-350-4040-2",
-                Nome = "Mare Gherita",
-                Autore = "Daniele Il Rosso",
-                DatadiPubblicazione = DateTime.Parse("10-03-2000"),
-                Editore = "Camerino Editor"
-            });
-            libri.Add(new Libro()
-            {
-                ISBN = "978-88-400-6070-2",
-                Nome = "Fracito",
-                Autore = "Dome",
-                DatadiPubblicazione = DateTime.Parse("23-10-2006"),
-                Editore = "Camerino Editor"
-            });
+            _libroService = libroService;
         }
+      
         
         [HttpGet]
         [Route("list")]
         public IEnumerable<Libro> GetLibri()
         {
-            return libri;
+            //return libri;
+            return null;
         }
         
         [HttpGet]
         [Route("get/{isbn}")]
         public Libro GetLibro(string isbn)
         {
-            return libri.Where(w => w.ISBN == isbn).First();
+            // return libri.Where(w => w.ISBN == isbn).First();
+            return null;
+        }
+
+        [HttpPost]
+        [Route("new")]
+        public IActionResult NewLibro(CreateLibroRequest request)
+        {
+            var libro = request.ToEntity();
+            _libroService.AddLibro(libro);
+            return Ok();
         }
     }
 }
