@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UnicamParadigmi.Application.Abstraction.Services;
-using UnicamParadigmi.Application.Models.Requeste;
+using UnicamParadigmi.Application.Models.Requests;
+using UnicamParadigmi.Application.Models.Responses;
 using UnicamParadigmi.Application.Services;
 using UnicamParadigmi.Models.Entities;
 
@@ -8,6 +10,7 @@ namespace UnicamParadigmi.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class LibroController : ControllerBase
     {
         private readonly ILibroService _libroService;
@@ -39,7 +42,10 @@ namespace UnicamParadigmi.Web.Controllers
         {
             var libro = request.ToEntity();
             _libroService.AddLibro(libro);
-            return Ok();
+
+            var response = new CreateLibroResponse();
+            response.Libro = new Application.Models.Dtos.LibroDtos(libro);
+            return Ok(response);
         }
     }
 }

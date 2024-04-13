@@ -1,6 +1,6 @@
 ﻿using UnicamParadigmi.Models.Entities;
 
-namespace UnicamParadigmi.Application.Models.Requeste
+namespace UnicamParadigmi.Application.Models.Requests
 {
     public class CreateLibroRequest
     {
