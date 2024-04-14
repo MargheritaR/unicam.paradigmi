@@ -28,7 +28,7 @@ namespace UnicamParadigmi.Web.Extension
                     Scheme = "Bearer",
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
-                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: "Bearer 1safsfsdfdfd"",
+                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement {
         {
@@ -45,12 +45,22 @@ namespace UnicamParadigmi.Web.Extension
 
 
             services.AddFluentValidationAutoValidation();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            
+            var jwtAuthenticationOption = new JwtAuthenticationOption();
+            config.GetSection("JwtAuthentication").Bind(jwtAuthenticationOption);
+            
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
     .AddJwtBearer(options =>
     {
         string key = "UnicamParadigmi.Chiave1234567890123";
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-        new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens
+        .TokenValidationParameters()
         {
             ValidateIssuer = true,
             ValidateLifetime = true,
@@ -60,13 +70,17 @@ namespace UnicamParadigmi.Web.Extension
             IssuerSigningKey = securityKey
         };
     });
-            var jwtAuthenticationOption = new JwtAuthenticationOption();
-            config.GetSection("jwtAuthenticationOption").Bind(jwtAuthenticationOption);
+            services.AddOptions(config);
+            
+            return services;
+        }
+        private static IServiceCollection AddOptions(this IServiceCollection services, 
+            IConfiguration config)
+        {
             services.Configure<JwtAuthenticationOption>(config.
-                GetSection("jwtAuthenticationOption")
+                GetSection("jwtAuthentication")
                 );
-
-
+           
             return services;
         }
     }

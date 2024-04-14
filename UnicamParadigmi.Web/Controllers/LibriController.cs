@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Application.Models.Requests;
@@ -10,7 +11,7 @@ namespace UnicamParadigmi.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class LibroController : ControllerBase
     {
         private readonly ILibroService _libroService;
