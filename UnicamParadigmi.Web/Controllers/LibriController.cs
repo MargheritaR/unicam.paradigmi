@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnicamParadigmi.Application.Abstraction.Services;
+using UnicamParadigmi.Application.Factories;
 using UnicamParadigmi.Application.Models.Requests;
 using UnicamParadigmi.Application.Models.Responses;
 using UnicamParadigmi.Application.Services;
@@ -46,7 +47,7 @@ namespace UnicamParadigmi.Web.Controllers
 
             var response = new CreateLibroResponse();
             response.Libro = new Application.Models.Dtos.LibroDtos(libro);
-            return Ok(response);
+            return Ok(ResponseFactory.WithSuccess(response));
         }
     }
 }

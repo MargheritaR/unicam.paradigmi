@@ -17,7 +17,7 @@ namespace UnicamParadigmi.Web.Results
                 }
             }
 
-            BadResponse response = (BadResponse)Value;
+            var response = (BadResponse)Value;
             response.Errors =  retErrors;
         }
     }

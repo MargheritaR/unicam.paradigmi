@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using UnicamParadigmi.Application.Options;
+using UnicamParadigmi.Web.Results;
 
 namespace UnicamParadigmi.Web.Extension
 {
@@ -12,7 +13,14 @@ namespace UnicamParadigmi.Web.Extension
     {
         public static IServiceCollection AddWebServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .ConfigureApiBehaviorOptions(opt => 
+                {
+                    opt.InvalidModelStateResponseFactory = (context) =>
+                    {
+                        return new BadRequestResultFactory(context);
+                    };
+                });
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
             {

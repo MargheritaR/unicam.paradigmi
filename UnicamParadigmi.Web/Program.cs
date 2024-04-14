@@ -1,3 +1,4 @@
+
 using UnicamParadigmi.Application.Extension;
 using UnicamParadigmi.Application.Middlewares;
 using UnicamParadigmi.Models.Extension;
@@ -14,7 +15,7 @@ var app = builder.Build();
 
 //INIZIALIZZO I MIDDLEWARE
 app.AddWebMiddleware();
-app.UseMiddleware<MiddlewareExample>();
+app.UseMiddleware<MiddlewareExtension>();
 
 
 app.Run();

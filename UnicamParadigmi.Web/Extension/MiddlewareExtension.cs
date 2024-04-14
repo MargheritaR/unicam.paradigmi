@@ -1,4 +1,10 @@
-﻿namespace UnicamParadigmi.Web.Extension
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using System.Net;
+using System.Text.Json;
+using UnicamParadigmi.Application.Factories;
+
+namespace UnicamParadigmi.Web.Extension
 {
     public static class MiddlewareExtension
     {
@@ -21,6 +27,21 @@
             app.UseAuthentication();
 
             app.UseAuthorization();
+            app.UseExceptionHandler(appError => 
+            {
+                appError.Run(async context =>
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    context.Response.ContentType = "application/json";
+                    var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+                    if (contextFeature != null)
+                    {
+                        var res = ResponseFactory.WithError(contextFeature.Error);
+                        await context.Response.WriteAsync(JsonSerializer.Serialize(res));
+                    }
+                });
+
+            });
 
             app.MapControllers();
 
