@@ -22,9 +22,26 @@ namespace UnicamParadigmi.Application.Services
             _libroRepository.Salvataggio();
         }
 
+        public void DeleteLibro(Libro libro)
+        {
+            _libroRepository.Rimuovi(libro);
+            _libroRepository.Salvataggio();
+        }
+
+        public void EditLibro(Libro libro)
+        {
+            _libroRepository.Modifica(libro);
+            _libroRepository.Salvataggio();
+        }
+
         public List<Libro> GetLibri()
         {
             return new List<Libro>();
+        }
+
+        public List<Libro> GetLibri(int from, int num, string? name,out int totalNum)
+        {
+            return _libroRepository.GetLibri(from, num, name, out totalNum);
         }
     }
 }

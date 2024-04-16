@@ -24,6 +24,8 @@ namespace UnicamParadigmi.Models.Context
 
         public DbSet<Utente> Utenti { get; set; }
 
+        public DbSet<Categoria> Categorie { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
            // optionsBuilder.UseSqlServer("data source=localhost; Initial catalog=Paradigmi; User Id=AdParadigmi; Password=AdParadigmi; TrustServerCertificate=True");

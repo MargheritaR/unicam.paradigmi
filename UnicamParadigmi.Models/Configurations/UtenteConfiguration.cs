@@ -15,7 +15,7 @@ namespace UnicamParadigmi.Models.Configurations
         {
             builder.ToTable("Utenti");
             builder.HasKey(p => p.IdUtente);
-            builder.Property(p => p.Nome).HasMaxLength(50);
+            builder.Property(p => p.Nome).HasMaxLength(100);
         }
 
     }
