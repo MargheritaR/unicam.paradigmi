@@ -21,6 +21,7 @@ namespace UnicamParadigmi.Models.Extension
                 conf.UseSqlServer(config.GetConnectionString("MyDbContext"));
             });
             services.AddScoped<LibroRepository>();
+            services.AddScoped<CategoriaRepository>();
 
             return services;
         }

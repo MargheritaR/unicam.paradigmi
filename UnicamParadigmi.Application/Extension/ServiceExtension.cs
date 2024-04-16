@@ -11,6 +11,7 @@ public static class ServiceExtension
     .SingleOrDefault(assembly => assembly.GetName().Name == "UnicamParadigmi.Application"));
         services.AddScoped<ILibroService, LibroService>();
         services.AddScoped<ITokenService, TokenServices>();
+        services.AddScoped<ICategoriaService, CategoriaService>();
 
 
         return services;

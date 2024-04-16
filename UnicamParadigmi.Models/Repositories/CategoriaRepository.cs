@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,12 @@ namespace UnicamParadigmi.Models.Repositories
     {
         public CategoriaRepository(MyDbContext ctx) : base(ctx)
         {
-
+           
+        }
+        public Categoria GetNomeCategoria(string id) 
+        {
+            return _ctx.Set<Categoria>().Include(c => c.Libri)
+                .Where(x => x.NomeCategoria.Equals( id)).FirstOrDefault();
         }
     }
 }

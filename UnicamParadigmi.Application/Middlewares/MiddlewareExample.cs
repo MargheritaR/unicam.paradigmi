@@ -21,5 +21,11 @@ namespace UnicamParadigmi.Application.Middlewares
             context.RequestServices.GetRequiredService<ILibroService>();
             await _next.Invoke(context);
         }
+
+        public async Task Invoke(HttpContext context, ICategoriaService categoriaService)
+        {
+            context.RequestServices.GetRequiredService<ICategoriaService>();
+            await _next.Invoke(context);
+        }
     }
 }
