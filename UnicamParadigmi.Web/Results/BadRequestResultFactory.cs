@@ -13,7 +13,7 @@ namespace UnicamParadigmi.Web.Results
                 var errors = key.Value.Errors;
                 for (int i = 0; i < errors.Count(); i++)
                 {
-                    retErrors.Add(errors[0].ErrorMessage);
+                    retErrors.Add(errors[i].ErrorMessage);
                 }
             }
 

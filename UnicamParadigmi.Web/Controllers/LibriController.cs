@@ -35,14 +35,6 @@ namespace UnicamParadigmi.Web.Controllers
             response.Libri = libri.Select(s => new Application.Models.Dtos.LibroDtos(s)).ToList();
             return Ok(ResponseFactory.WithSuccess(response));
         }
-        
-        [HttpGet]
-        [Route("get/{isbn}")]
-        public Libro GetLibro(string isbn)
-        {
-            // return libri.Where(w => w.ISBN == isbn).First();
-            return null;
-        }
 
         // Aggiungere un nuovo libro
         [HttpPost]

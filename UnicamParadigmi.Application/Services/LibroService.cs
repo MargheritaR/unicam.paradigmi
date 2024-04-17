@@ -12,10 +12,12 @@ namespace UnicamParadigmi.Application.Services
     public class LibroService : ILibroService
     {
         private readonly LibroRepository _libroRepository;
+
         public LibroService(LibroRepository libroRepository) 
         {
             _libroRepository = libroRepository;
         }
+
         public void AddLibro(Libro libro)
         {
             _libroRepository.Aggiungi(libro);

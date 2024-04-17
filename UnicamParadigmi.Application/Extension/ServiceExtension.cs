@@ -12,7 +12,7 @@ public static class ServiceExtension
         services.AddScoped<ILibroService, LibroService>();
         services.AddScoped<ITokenService, TokenServices>();
         services.AddScoped<ICategoriaService, CategoriaService>();
-
+        services.AddScoped<IUtenteService, UtenteService>();
 
         return services;
     }

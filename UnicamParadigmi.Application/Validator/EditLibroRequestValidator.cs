@@ -3,12 +3,10 @@ using UnicamParadigmi.Application.Models.Requests;
 
 namespace UnicamParadigmi.Application.Validator
 {
-    public class CreateLibroRequestValidator : AbstractValidator<CreateLibroRequest>
+    public class EditLibroRequestValidator : AbstractValidator<EditLibroRequest>
     {
-
-        public CreateLibroRequestValidator()
+        public EditLibroRequestValidator()
         {
-
             RuleFor(l => l.Editore)
                 .NotEmpty()
                 .WithMessage("Il campo Editore non può essere vuoto")
@@ -46,7 +44,6 @@ namespace UnicamParadigmi.Application.Validator
                 .WithMessage("Il campo Data di Pubblicazione non può essere nullo")
                 .NotEmpty()
                 .WithMessage("Il campo Categoria non può essere vuoto");
-
         }
     }
 }

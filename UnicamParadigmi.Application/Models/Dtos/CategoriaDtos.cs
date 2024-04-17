@@ -6,10 +6,7 @@ namespace UnicamParadigmi.Application.Models.Dtos
     {
         public string NomeCategoria { get; set; } = string.Empty;
 
-        public CategoriaDtos() 
-        {
-
-        }
+        public CategoriaDtos() { }
 
         public CategoriaDtos(Categoria categoria)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Core.Internal;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,23 @@ namespace UnicamParadigmi.Models.Repositories
 {
     public class CategoriaRepository : GenericRepository<Categoria>
     {
+        public MyDbContext Context { get; set; }
+
         public CategoriaRepository(MyDbContext ctx) : base(ctx)
         {
            
         }
-        public Categoria GetNomeCategoria(string id) 
+        /*
+        public bool ControlloCategoria(string? name)
         {
-            return _ctx.Set<Categoria>().Include(c => c.Libri)
-                .Where(x => x.NomeCategoria.Equals( id)).FirstOrDefault();
+            var query = _ctx.Categorie.AsQueryable();
+            query = query.Where(l => l.NomeCategoria.Equals(name));
+            if (!(query.IsNullOrEmpty()))
+            {
+                return false;
+            }
+            return true;
         }
+        */
     }
 }
