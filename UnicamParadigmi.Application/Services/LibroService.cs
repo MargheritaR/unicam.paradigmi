@@ -41,9 +41,19 @@ namespace UnicamParadigmi.Application.Services
             return new List<Libro>();
         }
 
-        public List<Libro> GetLibri(int from, int num, string? name,out int totalNum)
+        public List<Libro> GetLibriNome(int from, int num, string? name,out int totalNum)
         {
-            return _libroRepository.GetLibri(from, num, name, out totalNum);
+            return _libroRepository.GetLibriNome(from, num, name, out totalNum);
+        }
+
+        public List<Libro> GetLibriAutore(int from, int num, string? autore, out int totalNum)
+        {
+            return _libroRepository.GetLibriAutore(from, num, autore, out totalNum);
+        }
+        public List<Libro> GetLibriCategoria(int from, int num, string? categoria, out int totalNum)
+        {
+            return _libroRepository.GetLibriCategoria(from, num, categoria, out totalNum);
         }
     }
+
 }

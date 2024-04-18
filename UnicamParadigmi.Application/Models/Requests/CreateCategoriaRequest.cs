@@ -14,6 +14,10 @@ namespace UnicamParadigmi.Application.Models.Requests
             categoria.NomeCategoria = NomeCategoria;
             return categoria;
         }
+        public void Prova()
+        {
+            
+        }
     }
 
 }

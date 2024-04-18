@@ -13,14 +13,27 @@ namespace UnicamParadigmi.Application.Services
         }
         public void AddCategoria(Categoria categoria)
         {
+            /*if(_categoriaRepository.GetByNome(categoria) != null) 
+            {
+                return false;
+            }*/
             _categoriaRepository.Aggiungi(categoria);
             _categoriaRepository.Salvataggio();
+            
+
         }
 
-        public void DeleteCategoria(Categoria categoria)
+        public bool DeleteCategoria(string nome)
         {
-            _categoriaRepository.Rimuovi(categoria);
-            _categoriaRepository.Salvataggio();
+            /* Categoria categoria = _categoriaRepository.GetByNome(nome);
+             if(categoria != null && !categoria.Libri.Any()) 
+             {
+                 _categoriaRepository.Rimuovi(categoria);
+                 _categoriaRepository.Salvataggio();
+                 return true;
+             }
+             return false;*/
+            return false;
         }
     }
 }

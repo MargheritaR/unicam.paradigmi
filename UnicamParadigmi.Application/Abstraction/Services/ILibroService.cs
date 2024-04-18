@@ -6,7 +6,11 @@ namespace UnicamParadigmi.Application.Abstraction.Services
     {
         List<Libro> GetLibri();
 
-        List<Libro> GetLibri(int from, int num, string? name, out int totalNum);
+        List<Libro> GetLibriNome(int from, int num, string? name, out int totalNum);
+
+        List<Libro> GetLibriAutore(int from, int num, string? autore, out int totalNum);
+
+        List<Libro> GetLibriCategoria(int from, int num, string? categoria, out int totalNum);
 
         void AddLibro(Libro libro);
 

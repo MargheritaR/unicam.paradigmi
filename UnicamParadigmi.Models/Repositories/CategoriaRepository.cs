@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using UnicamParadigmi.Models.Context;
@@ -18,17 +19,15 @@ namespace UnicamParadigmi.Models.Repositories
         {
            
         }
-        /*
-        public bool ControlloCategoria(string? name)
+      /* public  Categoria GetByNome(Categoria categoria)
         {
-            var query = _ctx.Categorie.AsQueryable();
-            query = query.Where(l => l.NomeCategoria.Equals(name));
-            if (!(query.IsNullOrEmpty()))
+            if (_ctx.Set<Categoria>().Include(c => c.Libri)
+                .Where(x => x.NomeCategoria.Equals(categoria.NomeCategoria)).FirstOrDefault() == null)
             {
-                return false;
+                return null;
             }
-            return true;
-        }
-        */
+           /* return _ctx.Set<Categoria>().Include(c => c.Libri)
+                .Where(x => x.NomeCategoria.Equals(categoria.NomeCategoria)).FirstOrDefault();
+        }*/
     }
 }
