@@ -34,7 +34,7 @@ namespace UnicamParadigmi.Web.Controllers
         }
 
         // Rimozione di una categoria
-        /*[HttpPost]
+        [HttpPost]
         [Route("delete")]
         public IActionResult RimuoviLibro(DeleteCategoriaRequest request)
         {
@@ -44,6 +44,6 @@ namespace UnicamParadigmi.Web.Controllers
             var response = new DeleteCategoriaResponse();
             response.Categoria = new Application.Models.Dtos.CategoriaDtos(categoria);
             return Ok(ResponseFactory.WithSuccess(response));
-        }*/
+        }
     }
 }

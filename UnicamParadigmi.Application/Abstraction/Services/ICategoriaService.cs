@@ -6,6 +6,6 @@ namespace UnicamParadigmi.Application.Abstraction.Services
     {
         void AddCategoria(Categoria categoria);
 
-        bool DeleteCategoria(string nome);
+         void DeleteCategoria(Categoria categoria);
     }
 }

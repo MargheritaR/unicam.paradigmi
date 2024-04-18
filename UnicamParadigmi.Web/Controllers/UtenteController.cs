@@ -31,5 +31,15 @@ namespace UnicamParadigmi.Web.Controllers
             response.Utente = new Application.Models.Dtos.UtenteDtos(utente);
             return Ok(ResponseFactory.WithSuccess(response));
         }
+
+        [HttpPost]
+        [Route("login")]
+        public IActionResult Login(CreateLoginRequest request)
+        {
+            var utente = request.ToEntity();
+           string token = _utenteService.CreateToken(utente);
+
+            return Ok(ResponseFactory.WithSuccess(new CreateLoginResponse(token)));
+        }
     }
 }

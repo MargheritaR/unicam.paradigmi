@@ -23,17 +23,11 @@ namespace UnicamParadigmi.Application.Services
 
         }
 
-        public bool DeleteCategoria(string nome)
+        public void DeleteCategoria(Categoria categoria)
         {
-            /* Categoria categoria = _categoriaRepository.GetByNome(nome);
-             if(categoria != null && !categoria.Libri.Any()) 
-             {
-                 _categoriaRepository.Rimuovi(categoria);
-                 _categoriaRepository.Salvataggio();
-                 return true;
-             }
-             return false;*/
-            return false;
+            _categoriaRepository.Rimuovi(categoria);
+            _categoriaRepository.Salvataggio();
+
         }
     }
 }

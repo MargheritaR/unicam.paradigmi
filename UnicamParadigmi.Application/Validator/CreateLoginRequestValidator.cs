@@ -5,9 +5,9 @@ using UnicamParadigmi.Application.Models.Requests;
 
 namespace UnicamParadigmi.Application.Validator
 {
-    public class CreateTokenRequestValidator : AbstractValidator<CreateTokenRequest>
+    public class CreateLoginRequestValidator : AbstractValidator<CreateLoginRequest>
     {
-        public CreateTokenRequestValidator()
+        public CreateLoginRequestValidator()
         {
             RuleFor(r => r.Username)
                 .NotEmpty()
