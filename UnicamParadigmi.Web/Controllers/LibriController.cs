@@ -66,6 +66,21 @@ namespace UnicamParadigmi.Web.Controllers
             return Ok(ResponseFactory.WithSuccess(response));
         }
 
+        // Ricerca per Data di Pubblicazione con Paginazione
+        [HttpPost]
+        [Route("list/datadiPubblicazione")]
+        public IActionResult GetLibriDataDiPubblicazione(GetLibriRequest request)
+        {
+            // Validare la paginazione
+            int totalNum = 0;
+            var libri = _libroService.GetLibriDatadiPubblicazione(request.Page * request.PageSize, request.PageSize, request.Name, out totalNum);
+            var response = new GetLibroResponse();
+            var pageFounded = (totalNum / (decimal)request.PageSize);
+            response.NumeroPagine = (int)Math.Ceiling(pageFounded);
+            response.Libri = libri.Select(s => new Application.Models.Dtos.LibroDtos(s)).ToList();
+            return Ok(ResponseFactory.WithSuccess(response));
+        }
+
         // Aggiungere un nuovo libro
         [HttpPost]
         [Route("new")]

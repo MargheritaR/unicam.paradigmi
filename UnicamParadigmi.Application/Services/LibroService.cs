@@ -54,6 +54,11 @@ namespace UnicamParadigmi.Application.Services
         {
             return _libroRepository.GetLibriCategoria(from, num, categoria, out totalNum);
         }
+
+        public List<Libro> GetLibriDatadiPubblicazione(int from, int num, string? datadiPubblicazione, out int totalNum)
+        {
+            return _libroRepository.GetLibriDataDiPubblicazione(from, num, DateTime.Parse(datadiPubblicazione), out totalNum);
+        }
     }
 
 }

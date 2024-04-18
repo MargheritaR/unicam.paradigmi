@@ -12,6 +12,9 @@ namespace UnicamParadigmi.Application.Abstraction.Services
 
         List<Libro> GetLibriCategoria(int from, int num, string? categoria, out int totalNum);
 
+        List<Libro> GetLibriDatadiPubblicazione(int from, int num, string? datadiPubblicazione, out int totalNum);
+        
+
         void AddLibro(Libro libro);
 
         void DeleteLibro(Libro libro);

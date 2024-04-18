@@ -44,6 +44,7 @@ namespace UnicamParadigmi.Models.Repositories
 
             return query.OrderBy(o => o.Autore).Skip(from).Take(num).ToList();
         }
+
         public List<Libro> GetLibriCategoria(int from, int num, string? categoria, out int totalNum)
         {
             var query = _ctx.Libri.AsQueryable();
@@ -58,30 +59,17 @@ namespace UnicamParadigmi.Models.Repositories
         }
 
 
+        public List<Libro> GetLibriDataDiPubblicazione(int from, int num, DateTime? datadiPubblicazione, out int totalNum)
+        {
+            var query = _ctx.Libri.AsQueryable();
+            if (datadiPubblicazione.HasValue)
+            {
+                query = query.Where(w => w.DatadiPubblicazione.Equals(datadiPubblicazione));
+            }
 
-        /*
-        public List<Libro> GetLibroPerNome(string nome)
-        {
-            var libro = Context.Libri.Where(l => l.Nome == nome).ToList();
-            return libro;
-        }
-        public List<Libro> GetLibroPerDataDiPubblicazione(DateTime data)
-        {
-            var libro = Context.Libri.Where(l => l.DatadiPubblicazione == data).ToList();
-            return libro;
-        }
+            totalNum = query.Count();
 
-        public List<Libro> GetLibroCategoria(string categoria)
-        {
-            var libro = Context.Libri.Where(l => l.Categoria == categoria).ToList();
-            return libro;
+            return query.OrderBy(o => o.DatadiPubblicazione).Skip(from).Take(num).ToList();
         }
-
-        public List<Libro> GetLibroAutore(string autore)
-        {
-            var libro = Context.Libri.Where(l => l.Autore == autore).ToList();
-            return libro;
-        }
-        */
     }
 }

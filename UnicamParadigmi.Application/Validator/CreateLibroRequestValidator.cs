@@ -1,4 +1,6 @@
 ﻿using FluentValidation;
+using System.Text.RegularExpressions;
+using UnicamParadigmi.Application.Extension;
 using UnicamParadigmi.Application.Models.Requests;
 
 namespace UnicamParadigmi.Application.Validator
