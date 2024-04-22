@@ -6,14 +6,16 @@ namespace UnicamParadigmi.Application.Models.Requests
     public class EditLibroRequest
     {
         public string ISBN { get; set; }
+
         public string Nome { get; set; } = string.Empty;
 
         public string Autore { get; set; } = string.Empty;
 
         public string Editore { get; set; } = string.Empty;
-        public string Categoria { get; set; }
 
-        public DateTime DatadiPubblicazione { get; set; }
+        public string Categoria { get; set; } = string.Empty;
+
+        public string DatadiPubblicazione { get; set; } = string.Empty;
 
         public Libro ToEntity()
         {
@@ -23,7 +25,7 @@ namespace UnicamParadigmi.Application.Models.Requests
             libro.Autore = Autore;
             libro.Editore = Editore;
             libro.Categoria = Categoria;
-            libro.DatadiPubblicazione = DatadiPubblicazione;
+            libro.DatadiPubblicazione = DateTime.Parse(DatadiPubblicazione);
             return libro;
         }
 

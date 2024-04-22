@@ -20,6 +20,7 @@ namespace UnicamParadigmi.Web.Extension
                     {
                         return new BadRequestResultFactory(context);
                     };
+
                 });
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>

@@ -5,14 +5,12 @@ using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Application.Factories;
 using UnicamParadigmi.Application.Models.Requests;
 using UnicamParadigmi.Application.Models.Responses;
-using UnicamParadigmi.Application.Services;
-using UnicamParadigmi.Models.Entities;
 
 namespace UnicamParadigmi.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class LibroController : ControllerBase
     {
         private readonly ILibroService _libroService;
@@ -87,6 +85,10 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult AggiungiLibro(CreateLibroRequest request)
         {
             var libro = request.ToEntity();
+            if (_libroService.ValidateCategoria(libro) == false)
+            {
+                throw new Exception("La categoria che avete inserito non è stata ancora creata, Create la categoria per aggiungere il libro");
+            }
             _libroService.AddLibro(libro);
 
             var response = new CreateLibroResponse();

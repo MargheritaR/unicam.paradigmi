@@ -11,7 +11,7 @@ namespace UnicamParadigmi.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriaController : ControllerBase
     {
         private readonly ICategoriaService _categoriaService;
@@ -36,7 +36,7 @@ namespace UnicamParadigmi.Web.Controllers
         // Rimozione di una categoria
         [HttpPost]
         [Route("delete")]
-        public IActionResult RimuoviLibro(DeleteCategoriaRequest request)
+        public IActionResult RimuoviCategoria(DeleteCategoriaRequest request)
         {
             var categoria = request.ToEntity();
             _categoriaService.DeleteCategoria(categoria);

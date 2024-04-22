@@ -20,5 +20,8 @@ namespace UnicamParadigmi.Application.Abstraction.Services
         void DeleteLibro(Libro libro);
 
         void EditLibro(Libro libro);
+
+        bool ValidateCategoria(Libro libro);
+
     }
 }

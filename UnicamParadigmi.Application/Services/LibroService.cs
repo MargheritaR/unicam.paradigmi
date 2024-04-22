@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,15 @@ namespace UnicamParadigmi.Application.Services
         {
             return _libroRepository.GetLibriDataDiPubblicazione(from, num, DateTime.Parse(datadiPubblicazione), out totalNum);
         }
-    }
 
+        public bool ValidateCategoria(Libro libro)
+        {
+            if (_libroRepository.ControlloCategoria(libro).IsNullOrEmpty())
+            {
+                return false;
+            }
+            return true;
+        }
+
+    }
 }

@@ -1,4 +1,5 @@
-﻿using UnicamParadigmi.Models.Entities;
+﻿using UnicamParadigmi.Application.Models.Dtos;
+using UnicamParadigmi.Models.Entities;
 
 namespace UnicamParadigmi.Application.Models.Requests
 {

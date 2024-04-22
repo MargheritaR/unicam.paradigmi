@@ -18,13 +18,9 @@ namespace UnicamParadigmi.Application.Validator
             RuleFor(p => p.Password).NotEmpty()
                 .WithMessage("Il password è obbligatorio")
                 .NotNull()
-                .WithMessage("Il campo password non può essere nullo")
-                .MinimumLength(6)
-                .WithMessage("Il campo deve contenere almeno 6 caratteri")
-                .RegEx("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+{}\\[\\]:;<>,.?~\\\\-]).{6,}$"
-                , "Il campo deve essere lungo almeno 6 caratteri e deve contenere almeno un carattere maiuscolo,uno minuscolo, " +
-                "un numero e un carattere speciale ");
+                .WithMessage("Il campo password non può essere nullo");
 
         }
+        
     }
 }

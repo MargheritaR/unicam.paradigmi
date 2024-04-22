@@ -33,5 +33,11 @@ namespace UnicamParadigmi.Application.Middlewares
             context.RequestServices.GetRequiredService<IUtenteService>();
             await _next.Invoke(context);
         }
+
+        public async Task Invoke(HttpContext context, IConfiguration configuration)
+        {
+            context.RequestServices.GetRequiredService<IConfiguration>();
+            await _next.Invoke(context);
+        }
     }
 }

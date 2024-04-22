@@ -28,6 +28,22 @@ namespace UnicamParadigmi.Web.Extension
 
             app.UseAuthorization();
 
+            app.UseExceptionHandler(appError =>
+            {
+                appError.Run(async context =>
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    context.Response.ContentType = "application/json";
+                    var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+                    if (contextFeature != null)
+                    {
+                        var res = ResponseFactory.WithError(contextFeature.Error);
+                        await context.Response.WriteAsync(JsonSerializer.Serialize(res));
+                    }
+                });
+
+            });
+
             app.MapControllers();
 
             return app;

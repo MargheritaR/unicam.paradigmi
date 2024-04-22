@@ -40,10 +40,19 @@ namespace UnicamParadigmi.Application.Validator
                 .WithMessage("Il campo Categoria deve essere lungo almeno 3 caratteri");
 
             RuleFor(l => l.DatadiPubblicazione)
-                .NotNull()
-                .WithMessage("Il campo Data di Pubblicazione non può essere nullo")
                 .NotEmpty()
-                .WithMessage("Il campo Categoria non può essere vuoto");
+                .WithMessage("Il campo Data di Pubblicazione non può essere vuoto")
+                .NotNull()
+                .WithMessage("Il campo Data di Pubblicazione non può essere nullo");
+                
+
+            RuleFor(d => d.ISBN)
+               .NotEmpty()
+               .WithMessage("Il campo ISBN non può essere vuoto")
+               .NotNull()
+               .WithMessage("Il campo ISBN non può essere nullo")
+               .MinimumLength(15)
+               .WithMessage("Il campo ISBN deve essere lungo almeno 15 caratteri");
         }
     }
 }
