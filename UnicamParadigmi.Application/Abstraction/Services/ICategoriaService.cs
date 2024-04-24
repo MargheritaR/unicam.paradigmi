@@ -7,5 +7,9 @@ namespace UnicamParadigmi.Application.Abstraction.Services
         void AddCategoria(Categoria categoria);
 
          void DeleteCategoria(Categoria categoria);
+        
+        bool ValidateCategoria(Categoria categoria);
+
+        bool ValidateEliminazione(Categoria categoria);
     }
 }

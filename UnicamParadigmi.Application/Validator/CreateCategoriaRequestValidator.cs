@@ -17,15 +17,8 @@ namespace UnicamParadigmi.Application.Validator
                 .NotEmpty()
                 .WithMessage("Il campo Nome Categoria non può essere vuoto")
                 .MinimumLength(3)
-                .WithMessage("Il campo Nome Categoria deve essere lungo almeno 3 caratteri")
-                .Custom(ControlloCategoria);
+                .WithMessage("Il campo Nome Categoria deve essere lungo almeno 3 caratteri");
         }
-        private void ControlloCategoria(string nome, ValidationContext<CreateCategoriaRequest> context)
-        {
-            if (nome == context.InstanceToValidate.NomeCategoria)
-            {
-                context.AddFailure("Il campo Nome Categoria è già esistente");
-            }
-        }
+        
     }
 }

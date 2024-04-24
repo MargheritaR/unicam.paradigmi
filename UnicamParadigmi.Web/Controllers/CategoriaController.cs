@@ -11,7 +11,7 @@ namespace UnicamParadigmi.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriaController : ControllerBase
     {
         private readonly ICategoriaService _categoriaService;
@@ -26,6 +26,10 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult AggiungiCategoria(CreateCategoriaRequest request)
         {
             var categoria = request.ToEntity();
+            if (_categoriaService.ValidateCategoria(categoria) == false)
+            {
+                throw new Exception("La categoria inserita è già esistente");
+            }
             _categoriaService.AddCategoria(categoria);
 
             var response = new CreateCategoriaResponse();
@@ -39,6 +43,14 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult RimuoviCategoria(DeleteCategoriaRequest request)
         {
             var categoria = request.ToEntity();
+            if (_categoriaService.ValidateCategoria(categoria) == true)
+            {
+                throw new Exception("La categoria inserita non è esistente");
+            }
+            if (_categoriaService.ValidateEliminazione(categoria) == false)
+            {
+                throw new Exception("Ci sono dei libri legati a questa categoria");
+            }
             _categoriaService.DeleteCategoria(categoria);
 
             var response = new DeleteCategoriaResponse();

@@ -1,4 +1,5 @@
-﻿using UnicamParadigmi.Application.Abstraction.Services;
+﻿using Microsoft.IdentityModel.Tokens;
+using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Models.Entities;
 using UnicamParadigmi.Models.Repositories;
 
@@ -12,15 +13,9 @@ namespace UnicamParadigmi.Application.Services
             _categoriaRepository = categoriaRepository;
         }
         public void AddCategoria(Categoria categoria)
-        {
-            /*if(_categoriaRepository.GetByNome(categoria) != null) 
-            {
-                return false;
-            }*/
+        { 
             _categoriaRepository.Aggiungi(categoria);
             _categoriaRepository.Salvataggio();
-            
-
         }
 
         public void DeleteCategoria(Categoria categoria)
@@ -28,6 +23,24 @@ namespace UnicamParadigmi.Application.Services
             _categoriaRepository.Rimuovi(categoria);
             _categoriaRepository.Salvataggio();
 
+        }
+
+        public bool ValidateCategoria(Categoria categoria)
+        {
+            if(!(_categoriaRepository.ControlloCategoria(categoria).IsNullOrEmpty())) 
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool ValidateEliminazione(Categoria categoria)
+        {
+            if (!(_categoriaRepository.ControlloEliminazione(categoria).IsNullOrEmpty()))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

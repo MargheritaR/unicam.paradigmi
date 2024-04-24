@@ -19,15 +19,18 @@ namespace UnicamParadigmi.Models.Repositories
         {
            
         }
-      /* public  Categoria GetByNome(Categoria categoria)
+      public List<Categoria> ControlloCategoria(Categoria categoria)
         {
-            if (_ctx.Set<Categoria>().Include(c => c.Libri)
-                .Where(x => x.NomeCategoria.Equals(categoria.NomeCategoria)).FirstOrDefault() == null)
-            {
-                return null;
-            }
-           /* return _ctx.Set<Categoria>().Include(c => c.Libri)
-                .Where(x => x.NomeCategoria.Equals(categoria.NomeCategoria)).FirstOrDefault();
-        }*/
+            var query = _ctx.Categorie.AsQueryable();
+            query = query.Where(w => w.NomeCategoria.Equals(categoria.NomeCategoria));
+            return query.ToList();
+        }
+
+        public List<Libro> ControlloEliminazione(Categoria categoria)
+        {
+            var query = _ctx.Libri.AsQueryable();
+            query = query.Where(e => e.Categoria.Equals(categoria.NomeCategoria));
+            return query.ToList();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace UnicamParadigmi.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class LibroController : ControllerBase
     {
         private readonly ILibroService _libroService;
