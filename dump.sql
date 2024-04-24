@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Paradigmi]    Script Date: 08/04/2024 15:09:26 ******/
+/****** Object:  Database [Paradigmi]    Script Date: 24/04/2024 11:11:57 ******/
 CREATE DATABASE [Paradigmi]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,17 +84,17 @@ ALTER DATABASE [Paradigmi] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP
 GO
 USE [Paradigmi]
 GO
-/****** Object:  User [AdParadigmi]    Script Date: 08/04/2024 15:09:27 ******/
+/****** Object:  User [AdParadigmi]    Script Date: 24/04/2024 11:11:57 ******/
 CREATE USER [AdParadigmi] FOR LOGIN [AdParadigmi] WITH DEFAULT_SCHEMA=[dbo]
 GO
-/****** Object:  User [Admin]    Script Date: 08/04/2024 15:09:27 ******/
+/****** Object:  User [Admin]    Script Date: 24/04/2024 11:11:57 ******/
 CREATE USER [Admin] WITHOUT LOGIN WITH DEFAULT_SCHEMA=[dbo]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [AdParadigmi]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [Admin]
 GO
-/****** Object:  Table [dbo].[Categorie]    Script Date: 08/04/2024 15:09:27 ******/
+/****** Object:  Table [dbo].[Categorie]    Script Date: 24/04/2024 11:11:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,7 +107,7 @@ CREATE TABLE [dbo].[Categorie](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Libri]    Script Date: 08/04/2024 15:09:27 ******/
+/****** Object:  Table [dbo].[Libri]    Script Date: 24/04/2024 11:11:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,7 +125,7 @@ CREATE TABLE [dbo].[Libri](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Utenti]    Script Date: 08/04/2024 15:09:27 ******/
+/****** Object:  Table [dbo].[Utenti]    Script Date: 24/04/2024 11:11:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,4 +151,3 @@ USE [master]
 GO
 ALTER DATABASE [Paradigmi] SET  READ_WRITE 
 GO
-
