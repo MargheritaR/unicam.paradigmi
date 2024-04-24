@@ -19,7 +19,6 @@ namespace UnicamParadigmi.Models.Configurations
             builder.Property(p => p.Cognome).HasMaxLength(100);
             builder.Property(p => p.Password).HasMaxLength(50);
             builder.Property(p => p.Email).HasMaxLength(100);
-
         }
 
     }

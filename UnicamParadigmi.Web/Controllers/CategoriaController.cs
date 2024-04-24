@@ -5,7 +5,6 @@ using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Application.Factories;
 using UnicamParadigmi.Application.Models.Requests;
 using UnicamParadigmi.Application.Models.Responses;
-using UnicamParadigmi.Application.Services;
 
 namespace UnicamParadigmi.Web.Controllers
 {
@@ -26,10 +25,12 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult AggiungiCategoria(CreateCategoriaRequest request)
         {
             var categoria = request.ToEntity();
+
             if (_categoriaService.ValidateCategoria(categoria) == false)
             {
                 throw new Exception("La categoria inserita è già esistente");
             }
+
             _categoriaService.AddCategoria(categoria);
 
             var response = new CreateCategoriaResponse();
@@ -43,6 +44,7 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult RimuoviCategoria(DeleteCategoriaRequest request)
         {
             var categoria = request.ToEntity();
+
             if (_categoriaService.ValidateCategoria(categoria) == true)
             {
                 throw new Exception("La categoria inserita non è esistente");
@@ -51,6 +53,7 @@ namespace UnicamParadigmi.Web.Controllers
             {
                 throw new Exception("Ci sono dei libri legati a questa categoria");
             }
+
             _categoriaService.DeleteCategoria(categoria);
 
             var response = new DeleteCategoriaResponse();

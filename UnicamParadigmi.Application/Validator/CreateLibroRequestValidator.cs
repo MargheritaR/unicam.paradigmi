@@ -1,9 +1,6 @@
 ﻿using FluentValidation;
-using System.Text.RegularExpressions;
-using UnicamParadigmi.Application.Extension;
 using UnicamParadigmi.Application.Models.Requests;
-using UnicamParadigmi.Models.Entities;
-using UnicamParadigmi.Models.Repositories;
+
 
 namespace UnicamParadigmi.Application.Validator
 {

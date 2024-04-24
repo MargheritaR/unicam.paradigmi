@@ -1,6 +1,4 @@
-﻿using Castle.Core.Internal;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -15,11 +13,9 @@ namespace UnicamParadigmi.Models.Repositories
     {
         public MyDbContext Context { get; set; }
 
-        public CategoriaRepository(MyDbContext ctx) : base(ctx)
-        {
-           
-        }
-      public List<Categoria> ControlloCategoria(Categoria categoria)
+        public CategoriaRepository(MyDbContext ctx) : base(ctx) { }
+
+        public List<Categoria> ControlloCategoria(Categoria categoria)
         {
             var query = _ctx.Categorie.AsQueryable();
             query = query.Where(w => w.NomeCategoria.Equals(categoria.NomeCategoria));

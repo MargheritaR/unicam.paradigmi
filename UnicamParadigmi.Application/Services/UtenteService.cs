@@ -44,5 +44,23 @@ namespace UnicamParadigmi.Application.Services
             var token = new JwtSecurityTokenHandler().WriteToken(securityToken);
             return token;
         }
+
+        public bool CheckUtente(Utente utente)
+        {
+            if (_utenteRepository.ControlloUtente(utente).IsNullOrEmpty())
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool CheckEmail(Utente utente)
+        {
+            if (_utenteRepository.ControlloEmail(utente).IsNullOrEmpty())
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

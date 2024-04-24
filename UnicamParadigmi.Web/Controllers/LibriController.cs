@@ -24,11 +24,11 @@ namespace UnicamParadigmi.Web.Controllers
         [Route("list/nome")]
         public IActionResult GetLibriNome(GetLibriRequest request)
         {
-            // Validare la paginazione
             int totalNum = 0;
-            var libri = _libroService.GetLibriNome(request.Page * request.PageSize, request.PageSize, request.Name, out totalNum);
+            var libri = _libroService.GetLibriNome(request.Page * request.PageSize, request.PageSize, request.Cerca, out totalNum);
             var response = new GetLibroResponse();  
             var pageFounded = (totalNum / (decimal) request.PageSize);
+
             response.NumeroPagine = (int) Math.Ceiling(pageFounded);
             response.Libri = libri.Select(s => new Application.Models.Dtos.LibroDtos(s)).ToList();
             return Ok(ResponseFactory.WithSuccess(response));
@@ -39,11 +39,11 @@ namespace UnicamParadigmi.Web.Controllers
         [Route("list/autore")]
         public IActionResult GetLibriAutore(GetLibriRequest request)
         {
-            // Validare la paginazione
             int totalNum = 0;
-            var libri = _libroService.GetLibriAutore(request.Page * request.PageSize, request.PageSize, request.Name, out totalNum);
+            var libri = _libroService.GetLibriAutore(request.Page * request.PageSize, request.PageSize, request.Cerca, out totalNum);
             var response = new GetLibroResponse();
             var pageFounded = (totalNum / (decimal)request.PageSize);
+
             response.NumeroPagine = (int)Math.Ceiling(pageFounded);
             response.Libri = libri.Select(s => new Application.Models.Dtos.LibroDtos(s)).ToList();
             return Ok(ResponseFactory.WithSuccess(response));
@@ -54,11 +54,11 @@ namespace UnicamParadigmi.Web.Controllers
         [Route("list/categoria")]
         public IActionResult GetLibriCategoria(GetLibriRequest request)
         {
-            // Validare la paginazione
             int totalNum = 0;
-            var libri = _libroService.GetLibriCategoria(request.Page * request.PageSize, request.PageSize, request.Name, out totalNum);
+            var libri = _libroService.GetLibriCategoria(request.Page * request.PageSize, request.PageSize, request.Cerca, out totalNum);
             var response = new GetLibroResponse();
             var pageFounded = (totalNum / (decimal)request.PageSize);
+
             response.NumeroPagine = (int)Math.Ceiling(pageFounded);
             response.Libri = libri.Select(s => new Application.Models.Dtos.LibroDtos(s)).ToList();
             return Ok(ResponseFactory.WithSuccess(response));
@@ -69,11 +69,11 @@ namespace UnicamParadigmi.Web.Controllers
         [Route("list/datadiPubblicazione")]
         public IActionResult GetLibriDataDiPubblicazione(GetLibriRequest request)
         {
-            // Validare la paginazione
             int totalNum = 0;
-            var libri = _libroService.GetLibriDatadiPubblicazione(request.Page * request.PageSize, request.PageSize, request.Name, out totalNum);
+            var libri = _libroService.GetLibriDatadiPubblicazione(request.Page * request.PageSize, request.PageSize, request.Cerca, out totalNum);
             var response = new GetLibroResponse();
             var pageFounded = (totalNum / (decimal)request.PageSize);
+
             response.NumeroPagine = (int)Math.Ceiling(pageFounded);
             response.Libri = libri.Select(s => new Application.Models.Dtos.LibroDtos(s)).ToList();
             return Ok(ResponseFactory.WithSuccess(response));
@@ -85,10 +85,12 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult AggiungiLibro(CreateLibroRequest request)
         {
             var libro = request.ToEntity();
+
             if (_libroService.ValidateCategoria(libro) == false)
             {
                 throw new Exception("La categoria che avete inserito non è stata ancora creata, Create la categoria per aggiungere il libro");
             }
+            
             _libroService.AddLibro(libro);
 
             var response = new CreateLibroResponse();
@@ -118,7 +120,7 @@ namespace UnicamParadigmi.Web.Controllers
             var libro = request.ToEntity();
             _libroService.EditLibro(libro);
 
-            var response = new DeleteLibroResponse();
+            var response = new EditLibroResponse();
             response.Libro = new Application.Models.Dtos.LibroDtos(libro);
             return Ok(ResponseFactory.WithSuccess(response));
         }

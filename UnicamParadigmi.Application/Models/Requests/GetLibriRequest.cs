@@ -6,6 +6,6 @@
 
         public int Page { get; set; }
 
-        public string? Name { get; set; }
+        public string? Cerca { get; set; }
     }
 }

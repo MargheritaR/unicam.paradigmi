@@ -14,7 +14,7 @@ namespace UnicamParadigmi.Application.Validator
                 .WithMessage("Il campo PageSize non può essere nullo");
                 
 
-            RuleFor(g => g.Name)
+            RuleFor(g => g.Cerca)
                 .NotEmpty()
                 .WithMessage("Il campo Name non può essere vuoto")
                 .NotNull()

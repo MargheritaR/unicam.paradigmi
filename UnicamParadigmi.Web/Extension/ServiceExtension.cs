@@ -14,7 +14,7 @@ namespace UnicamParadigmi.Web.Extension
         public static IServiceCollection AddWebServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddControllers()
-                .ConfigureApiBehaviorOptions(opt => 
+                .ConfigureApiBehaviorOptions(opt =>
                 {
                     opt.InvalidModelStateResponseFactory = (context) =>
                     {
@@ -54,10 +54,10 @@ namespace UnicamParadigmi.Web.Extension
 
 
             services.AddFluentValidationAutoValidation();
-            
+
             var jwtAuthenticationOption = new JwtAuthenticationOption();
             config.GetSection("JwtAuthentication").Bind(jwtAuthenticationOption);
-            
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -80,16 +80,16 @@ namespace UnicamParadigmi.Web.Extension
         };
     });
             services.AddOptions(config);
-            
+
             return services;
         }
-        private static IServiceCollection AddOptions(this IServiceCollection services, 
+        private static IServiceCollection AddOptions(this IServiceCollection services,
             IConfiguration config)
         {
             services.Configure<JwtAuthenticationOption>(config.
                 GetSection("jwtAuthentication")
                 );
-           
+
             return services;
         }
     }

@@ -1,9 +1,5 @@
 ﻿using FluentValidation;
-using Microsoft.IdentityModel.Tokens;
-using UnicamParadigmi.Application.Models.Dtos;
 using UnicamParadigmi.Application.Models.Requests;
-using UnicamParadigmi.Models.Context;
-using UnicamParadigmi.Models.Repositories;
 
 namespace UnicamParadigmi.Application.Validator
 {

@@ -1,6 +1,4 @@
-﻿using Castle.Core.Internal;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -16,10 +14,7 @@ namespace UnicamParadigmi.Models.Repositories
     {
         public MyDbContext Context { get; set; }
 
-        public LibroRepository(MyDbContext ctx) : base(ctx)
-        {
-
-        }
+        public LibroRepository(MyDbContext ctx) : base(ctx) { }
 
         public List<Libro> GetLibriNome(int from, int num, string? name, out int totalNum)
         {

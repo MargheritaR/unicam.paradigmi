@@ -1,6 +1,4 @@
 ﻿using FluentValidation;
-using System.Text.RegularExpressions;
-using UnicamParadigmi.Application.Extension;
 using UnicamParadigmi.Application.Models.Requests;
 
 namespace UnicamParadigmi.Application.Validator
@@ -11,12 +9,12 @@ namespace UnicamParadigmi.Application.Validator
         {
             RuleFor(r => r.Username)
                 .NotEmpty()
-                .WithMessage("Il campo è obbligatorio")
+                .WithMessage("Il campo username è obbligatorio")
                 .NotNull()
                 .WithMessage("Il campo username non può essere nullo");
 
             RuleFor(p => p.Password).NotEmpty()
-                .WithMessage("Il password è obbligatorio")
+                .WithMessage("Il campo password è obbligatorio")
                 .NotNull()
                 .WithMessage("Il campo password non può essere nullo");
 

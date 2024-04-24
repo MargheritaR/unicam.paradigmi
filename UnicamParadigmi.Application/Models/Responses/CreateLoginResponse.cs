@@ -1,6 +1,4 @@
-﻿using UnicamParadigmi.Application.Models.Dtos;
-
-namespace UnicamParadigmi.Application.Models.Responses
+﻿namespace UnicamParadigmi.Application.Models.Responses
 {
     public class CreateLoginResponse
     {

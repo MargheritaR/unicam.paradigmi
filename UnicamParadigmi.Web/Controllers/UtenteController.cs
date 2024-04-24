@@ -5,7 +5,6 @@ using UnicamParadigmi.Application.Abstraction.Services;
 using UnicamParadigmi.Application.Factories;
 using UnicamParadigmi.Application.Models.Requests;
 using UnicamParadigmi.Application.Models.Responses;
-using UnicamParadigmi.Models.Entities;
 
 namespace UnicamParadigmi.Web.Controllers
 {
@@ -25,6 +24,12 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult NuovoUtente(CreateUtenteRequest request)
         {
             var utente = request.ToEntity();
+
+            if (_utenteService.CheckEmail(utente) == true)
+            {
+                throw new Exception("La email è già stata utilizzata ");
+            }
+
             _utenteService.AddUtente(utente);
 
             var response = new CreateUtenteResponse();
@@ -37,7 +42,12 @@ namespace UnicamParadigmi.Web.Controllers
         public IActionResult Login(CreateLoginRequest request)
         {
             var utente = request.ToEntity();
-           string token = _utenteService.CreateToken(utente);
+
+            if (_utenteService.CheckUtente(utente) == false) {
+                throw new Exception("La email o la password non sono corretti o l'account è inesistente");
+            }
+
+            string token = _utenteService.CreateToken(utente);
 
             return Ok(ResponseFactory.WithSuccess(new CreateLoginResponse(token)));
         }

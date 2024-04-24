@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
-using UnicamParadigmi.Models.Entities;
+﻿using UnicamParadigmi.Models.Entities;
 
 namespace UnicamParadigmi.Application.Models.Requests
 {
